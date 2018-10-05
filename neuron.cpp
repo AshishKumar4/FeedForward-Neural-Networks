@@ -3,7 +3,7 @@
 #include "vector"
 #include "algorithm"
 #include "main.h"
-#include "IDX_Drivers\idx.cpp"
+#include "./IDX_Drivers/idx.cpp"
 #include "random"
 #include "chrono"
 

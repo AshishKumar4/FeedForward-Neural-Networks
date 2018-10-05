@@ -15,16 +15,16 @@ int main()
   idx_img* imgs2 = new idx_img("digits/testimg.bin", 60000);
 
 
-  int n = 100;
+  int n = 20;
   int opt[3] = {28*28, n, 10};
 
   neuralNet nn(3, opt);
   vector<double> results;
   nn.clearProp();
   double ttpp = 0;
-  for(int k = 0; k < 40; k++)
+  for(int k = 0; k < 2; k++)
   {
-    for(int i = 0; i < 60000; i++)
+    for(int i = 0; i < 10000; i++)
     {
       nn.input(imgs->imgs[i]);//(d_train[i]);
       int dd = nn.output(lbl->labels.values[i]);
@@ -36,6 +36,7 @@ int main()
     learning_rate *= alpha;
   /*  lambda += ttpp;
     ttpp *= 5;*/
+
     double c = 0;
     for(int i = 0; i < 10000; i++)
     {
@@ -59,14 +60,15 @@ int main()
     for(int i = 0; i < results.size(); i++)
     {
       cout<<"{"<<results[i]<<" % }->";
-    }
+    }//*/
+    cout<<"\nEpoch "<<k<<" Completed";
   }
-  /*
+  
   for(int i = 0; i < results.size(); i++)
   {
     cout<<"{"<<results[i]<<" % }->";
-  }*/
-  printf("\n Tanh n = %d, SOFTMAX phi = %f rate = 0.005, lambda = %f theta = %f, beta = %f, better averaged convergence = e, backprop continuous, aplha = %f, _gamma = %f",
+  }
+  printf("\n 32, e = Tanh n = %d, SOFTMAX phi = %f rate = 0.005, lambda = %f theta = %f, beta = %f, better averaged convergence = e, backprop continuous, aplha = %f, _gamma = %f",
      n, phi, lambda, theta, beta, alpha, _gamma);
   return 0;
 }

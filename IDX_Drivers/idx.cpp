@@ -4,7 +4,6 @@
 #include "iostream"
 #include "string.h"
 #include "fstream"
-#include "../main.h"
 
 
 using namespace std;
@@ -118,19 +117,3 @@ public:
 	}
 };
 
-void imgConverter(idx_content im, data_input* dd)
-{
-  int d = 0;
-  for(int i = 0; i < 28*28; i++)
-  {
-    d += im.values[i];
-  }
-  double e = (double)d;
-  e /= (28*28);
-
-	dd->data = new double[28*28];
-  for(int i = 0; i < 28*28; i++)
-  {
-    dd->data[i] = tanh((double)(((double)im.values[i] - e))/(e*_gamma));//2*(FuncNeural((double)im.values[i]/1000) - 0.5);
-  }
-}
